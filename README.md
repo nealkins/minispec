@@ -1,8 +1,7 @@
 
-## Minispec - Simple, Intuitive, Full-featured Test Framework
+### Minispec - Simple, Intuitive, Full-featured Testing Framework
 
-[Examples](#some-examples) |
-[Installation](#installation) |
+[Install](#installation) |
 [Quick Start](#quick-start) |
 [Docs](#docs) |
 [Contributors](#contributors) |
@@ -81,54 +80,53 @@ end
 
 # Docs
 
-  * Defining Specs
-    * Nested Specs
-  * Defining Tests
-    * Skipping a test
-    * Mark a test as failed
-  * Shared examples and setups
-    * Resetting included resources
-  * Local variables and subject
-  * Custom error messages
-  * Hooks
-    * `before` and `before_all`
-    * `after` and `after_all`
-    * `around` and `around_all`
-    * Filters
-  * Assertions
-    * Negative assertions
-    * Semantic sugar
-  * Helpers
-    * Built-in helpers
-      * raise
-      * throw
-      * boolean
-      * array
-      * silent
-    * Custom helpers
-    * Helpers with blocks
-    * Helpers aliases
-  * Mocking
-    * Expectations
-      * Constraints
-        * arguments
-        * returned value
-        * raised exception
-        * thrown symbol
-        * yielded arguments
-        * messages amount
-        * messages order
-    * Spies
-    * Stubs
-      * Argument-vary stubs
-      * Stubbing multiple methods at once
-      * Chained stubs
-      * Calling original
-      * Stubs visibility
-    * Mocks
-    * Doubles
-  * Running Specs
-
+  * [Defining Specs](#defining-specs)
+    * [Nested Specs](#-nested-specs)
+  * [Defining Tests](#defining-tests)
+    * [Skipping a test](#-skipping-a-test)
+    * [Mark a test as failed](#-mark-a-test-as-failed)
+  * [Shared examples and setups](#shared-examples-and-setups)
+    * [Resetting included resources](#-resetting-included-resources)
+  * [Local variables and subject](#local-variables-and-subject)
+  * [Custom error messages](#custom-error-messages)
+  * [Hooks](#hooks)
+    * [`before` and `before_all`](#-before-and-before_all)
+    * [`after` and `after_all`](#-after-and-after_all)
+    * [`around` and `around_all`](#-around-and-around_all)
+    * [Filters](#-filters)
+  * [Assertions](#assertions)
+    * [Negative assertions](#-negative-assertions)
+    * [Semantic sugar](#-semantic-sugar)
+  * [Helpers](#helpers)
+    * [Built-in helpers](#-built-in-helpers)
+      * [raise](#-raise-helper)
+      * [throw](#-throw-helper)
+      * [boolean](#-boolean-helpers)
+      * [array](#-array-helpers)
+      * [silent](#-silent-helper)
+    * [Custom helpers](#-custom-helpers)
+    * [Helpers with blocks](#-helpers-with-blocks)
+    * [Helpers aliases](#-helpers-aliases)
+  * [Mocking](#mocking)
+    * [Expectations](#-expectations)
+      * [Constraints](#-constraints)
+        * [arguments](#-arguments)
+        * [returned value](#-returned-value)
+        * [raised exception](#-raised-exception)
+        * [thrown symbol](#-thrown-symbol)
+        * [yielded arguments](#-yielded-arguments)
+        * [messages amount](#-messages-amount)
+        * [messages order](#-messages-order)
+    * [Spies](#-spies)
+    * [Stubs](#-stubs)
+      * [Argument-vary stubs](#-argument-vary-stubs)
+      * [Stubbing multiple methods at once](#-stubbing-multiple-methods-at-once)
+      * [Chained stubs](#-chained-stubs)
+      * [Calling original](#-calling-original)
+      * [Stubs visibility](#-stubs-visibility)
+    * [Mocks](#-mocks)
+    * [Doubles](#-doubles)
+  * [Running Specs](#running-specs)
 
 
 ## Defining Specs
@@ -864,7 +862,7 @@ expect(a).is.non_falsy?
 
 [&#8679; Table of Contents](#docs)
 
-#### &#8627; silent
+#### &#8627; `silent` helpers
 
 `silent` (aliased as `silent?` and `is_silent`) expects given block to output nothing, that's it, the block should  write nothing to STDOUT nor to STDERR.
 
@@ -1543,7 +1541,7 @@ expect(a).to_receive(:x, :y).without_yield
 [&#8679; Table of Contents](#docs)
 
 
-#### &#8627; Amount
+#### &#8627; Messages Amount
 
 `count`, or its alias `times`, allow to check how many times a specific message was received.
 
@@ -1587,7 +1585,7 @@ expect(a).to_receive(:x, :y).count {|x,y| x == 2 && y > 1}
 
 [&#8679; Table of Contents](#docs)
 
-#### &#8627; Order
+#### &#8627; Messages Order
 
 Unlike RSpec, ordering in Minispec works only with multiple messages.
 
