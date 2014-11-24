@@ -1,5 +1,7 @@
 
-### Minispec - Simple, Intuitive, Full-featured Testing Framework
+### Minispec
+
+**Simple, Intuitive, Full-featured Testing Framework**
 
 [Install](#installation) |
 [Quick Start](#quick-start) |
