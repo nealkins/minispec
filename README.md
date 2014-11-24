@@ -864,7 +864,7 @@ expect(a).is.non_falsy?
 
 [&#8679; Table of Contents](#docs)
 
-#### &#8627; `silent` helpers
+#### &#8627; `silent` helper
 
 `silent` (aliased as `silent?` and `is_silent`) expects given block to output nothing, that's it, the block should  write nothing to STDOUT nor to STDERR.
 
