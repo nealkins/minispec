@@ -3,7 +3,7 @@
 
 **Simple, Intuitive, Full-featured Testing Framework**
 
-[Install](#installation) |
+[Install](#install) |
 [Quick Start](#quick-start) |
 [Docs](#docs) |
 [Contributors](#contributors) |
