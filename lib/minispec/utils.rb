@@ -62,7 +62,14 @@ module MiniSpec
         protected: :protected_methods,
           private: :private_methods
       }.each_pair do |v,m|
-        return v if object.send(m).include?(method)
+        if v == :public
+          # in case public_methods overridden to include method
+          # but method in fact does not exists,
+          # most notable ActiveRecord::Base#find which rely on method_missing
+          return v if object.respond_to?(method)
+        else
+          return v if object.send(m).include?(method)
+        end
       end
       nil
     end
