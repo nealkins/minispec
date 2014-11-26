@@ -7,12 +7,6 @@ module MiniSpec
       object.instance_eval('undef :%s' % method)
     end
 
-    def method_defined? object, method
-      object.respond_to?(method) ||
-        object.protected_methods.include?(method) ||
-        object.private_methods.include?(method)
-    end
-
     # @api private
     # checking whether correct arguments passed to proxy methods.
     #
@@ -72,6 +66,7 @@ module MiniSpec
       end
       nil
     end
+    alias method_defined? method_visibility
 
     def array_elements_map array
       # borrowed from thoughtbot/shoulda
