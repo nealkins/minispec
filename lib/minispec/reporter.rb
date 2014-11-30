@@ -84,10 +84,10 @@ module MiniSpec
     def totals__tests
       print(info('       Tests: '))
       print(send(@failed_tests.any? ? :info : :success, Minispec.tests))
-      failed  = error('%s failed' % @failed_tests.values.map(&:size).reduce(:+)) if @failed_tests.any?
-      skipped = warn('%s skipped' % @skipped_tests.size) if @skipped_tests.any?
+      failed  = error('  (%s failed)' % @failed_tests.values.map(&:size).reduce(:+)) if @failed_tests.any?
+      skipped = warn('  (%s skipped)' % @skipped_tests.size) if @skipped_tests.any?
       report  = [failed, skipped].compact.join(', ')
-      puts(report.empty? ? report : ' (%s)' %  report)
+      puts(report)
     end
 
     def totals__assertions
