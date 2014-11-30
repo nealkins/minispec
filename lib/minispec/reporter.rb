@@ -149,8 +149,13 @@ module MiniSpec
     def print(*args); @stdout.print(*indent_lines(*args)) end
     def puts(*args);  @stdout.puts(*indent_lines(*args))  end
 
-    {success: 32, info: 34, warn: 35, error: 31}.each_pair do |m,c|
-      define_method(m) {|s| "\e[%im%s\e[0m" % [c, s]}
+    {
+      success: [1, 32],
+      info:    [0, 36],
+      warn:    [0, 35],
+      error:   [0, 31]
+    }.each_pair do |m,(esc,color)|
+      define_method(m) {|str| "\e[%i;%im%s\e[0m" % [esc, color, str]}
     end
 
     def failures?
