@@ -84,7 +84,7 @@ MiniSpec::SPEC_WRAPPERS.each do |meth|
   #     # some another tests
   #   end
   #
-  define_method meth do |subject, &proc|
+  Object.send :define_method, meth do |subject, &proc|
     spec_name = subject.to_s.freeze
     spec = Class.new do
       include Minispec
