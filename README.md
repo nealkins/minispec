@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/sleewoo/minispec.svg?branch=master)](https://travis-ci.org/sleewoo/minispec)
 
 ### Minispec
 
