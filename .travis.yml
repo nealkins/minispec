@@ -5,4 +5,4 @@ rvm:
   - jruby-19mode
   - rbx-2
   - ruby-head
-before_install: '[[ $(ruby -e "RUBY_ENGINE") == "rbx" ]] && gem uninstall -a -I -x minitest'
+before_install: 'if [[ $(ruby -e "RUBY_ENGINE") == "rbx" ]]; then gem uninstall -a -I -x minitest; fi'
