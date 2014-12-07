@@ -3,6 +3,5 @@ rvm:
   - 1.9.3
   - 2.1.0
   - jruby-19mode
-  - rbx-2
+  # - rbx-2 excluding until find a way to make it use Minispec 5 over 4
   - ruby-head
-before_install: 'if [[ $(ruby -e "print RUBY_ENGINE") == "rbx" ]]; then gem uninstall -a -I -x minitest; fi'
