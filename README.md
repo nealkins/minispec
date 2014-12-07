@@ -12,14 +12,14 @@
 
 ## What and Why
 
-Simply, I'm tired of syntax like `assert_equal(b, a)`, `a.should == b` and `expect(a).to eq(b)` etc.
+Simply, I'm tired of syntax like `assert_equal(b, a)`, `a.should == b`, `expect(a).to eq(b)` etc.
 
-`is(a) == b` is all i want to type.
+Something closer to `a == b` would make more sense to me.
 
-Also I'm tired of learning framework specific techniques. I want simply to use Ruby's native methods:
+And I'm tired of learning framework specific techniques. I want simply to use **Ruby's native methods**:
 
 ```ruby
-is(a) == b
+assert(a) == b
 does(a).include?(b)
 is(a).empty?
 ```
