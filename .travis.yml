@@ -5,3 +5,4 @@ rvm:
   - jruby-19mode
   - rbx-2
   - ruby-head
+before_install: gem uninstall -a -I -x minitest
