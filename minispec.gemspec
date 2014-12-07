@@ -1,6 +1,6 @@
 # coding: utf-8
 
-name, version = 'minispec 0.0.1'.split
+name, version = 'minispec 0.0.2'.split
 Gem::Specification.new do |spec|
   spec.name          = name
   spec.version       = version
