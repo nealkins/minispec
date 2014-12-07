@@ -162,23 +162,25 @@ class MinispecTest
         assert(o.send(:a, 1)) == :one
       end
 
-      it 'keeps the visibility of existing methods' do
-        o = Class.new do
-          def a; end
-          protected
-          def b; end
-          private
-          def c; end
-        end.new
+      if RUBY_VERSION.to_f >= 2
+        it 'keeps the visibility of existing methods' do
+          o = Class.new do
+            def a; end
+            protected
+            def b; end
+            private
+            def c; end
+          end.new
 
-        stub(o, :a)
-        does(o.public_methods).include?(:a)
+          stub(o, :a)
+          does(o.public_methods).include?(:a)
 
-        stub(o, :b)
-        does(o.protected_methods).include?(:b)
+          stub(o, :b)
+          does(o.protected_methods).include?(:b)
 
-        stub(o, :c)
-        does(o.private_methods).include?(:c)
+          stub(o, :c)
+          does(o.private_methods).include?(:c)
+        end
       end
 
       it 'enforces public visibility on protected methods' do

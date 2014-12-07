@@ -70,26 +70,28 @@ class MinispecTest
         assert(o.send(:a)) == :b
       end
 
-      it 'keeps the visibility of existing methods' do
-        o = Class.new do
-          def a; end
-          protected
-          def b; p :blah; end
-          private
-          def c; end
-        end.new
+      if RUBY_VERSION.to_f >= 2
+        it 'keeps the visibility of existing methods' do
+          o = Class.new do
+            def a; end
+            protected
+            def b; p :blah; end
+            private
+            def c; end
+          end.new
 
-        mock(o, :a)
-        o.send(:a)
-        does(o.public_methods).include?(:a)
+          mock(o, :a)
+          o.send(:a)
+          does(o.public_methods).include?(:a)
 
-        mock(o, :b)
-        o.send(:b)
-        does(o.protected_methods).include?(:b)
+          mock(o, :b)
+          o.send(:b)
+          does(o.protected_methods).include?(:b)
 
-        mock(o, :c)
-        o.send(:c)
-        does(o.private_methods).include?(:c)
+          mock(o, :c)
+          o.send(:c)
+          does(o.private_methods).include?(:c)
+        end
       end
 
       it 'uses `with_any` with a block to define a catchall return' do
