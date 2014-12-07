@@ -11,11 +11,11 @@
 
 ## What and Why
 
-Simply i tired of syntax like `assert_equal(b, a)`, `a.should == b` and `expect(a).to eq(b)` etc.
+Simply, I'm tired of syntax like `assert_equal(b, a)`, `a.should == b` and `expect(a).to eq(b)` etc.
 
 `is(a) == b` is all i want to type.
 
-Also i tired to learn framework specific techniques. I want simply to use Ruby's native methods:
+Also I'm tired of learning framework specific techniques. I want simply to use Ruby's native methods:
 
 ```ruby
 is(a) == b
@@ -25,7 +25,7 @@ is(a).empty?
 
 `==`, `include?`, `empty?` are all Ruby methods called on `a`.
 
-What you see around `a` is a simple wrapper that passes messages to `a` and mark the assertion as passed or failed, depending on returned value.
+What you see around `a` is a simple wrapper that passes messages to `a` and marks the assertion as passed or failed, depending on returned value.
 
 
 ## Install
@@ -163,9 +163,9 @@ end
 
 ### &#8627; Nested Specs
 
-Minispec allows to define unlimitedly nested specs using same `describe`/`context`/`section` DSL:
+Minispec allows you to nest specs using the same `describe`/`context`/`section` DSL:
 
-Nested specs are akin of valve, they inherits everything(except tests) from parent spec but share nothing with it and does not change parent state in any way:
+Nested specs inherit everything (except tests) from parent spec, but do not change any parent specs state in any way:
 
 ```ruby
 describe :A do
@@ -274,7 +274,7 @@ If you need all assertions to be evaluated regardless failures use `continue_on_
 
 ## Shared examples and setups
 
-Often you need to share some setups and tests(a.k.a examples) between various specs.
+Often you need to share some setups and tests (a.k.a examples) between various specs.
 
 To define shared setups/examples simply define a module that includes `Minispec`.
 
@@ -350,7 +350,7 @@ end
 
 ## Local variables and subject
 
-Minispec provides `let` method as a clean way to define local variables. Its block are executed only once per test, when given variable used for first time.
+Minispec provide a `let` method as a clean way to define local variables. Its block are executed only once per test, when given variable used for first time.
 
 ```ruby
 describe Array do
@@ -362,7 +362,7 @@ describe Array do
 end
 ```
 
-`subject` allow to test some object without repeatedly typing it. It is automatically set when a spec defined using Minispec's DSL:
+`subject` allows testing some object without repeatedly typing it. It is automatically set when a spec is defined using Minispec's DSL:
 
 ```ruby
 describe Hash do
