@@ -134,10 +134,14 @@ module MiniSpec
 
           method = base.most_relevant_block_for(args)
 
-          proc = block ? Proc.new do |*a,&b|
-            message[:yielded] = a
-            block.call(*a, &b)
-          end : nil
+          proc = if block
+            Proc.new do |*a,&b|
+              message[:yielded] = a
+              block.call(*a, &b)
+            end
+          else
+            nil
+          end
 
           begin
             message[:returned] = method.call(original, *args, &proc)

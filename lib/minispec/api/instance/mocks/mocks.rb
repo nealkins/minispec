@@ -187,10 +187,14 @@ module MiniSpec
         return self == nil if method_name == :nil?
         return unless method
 
-        proc = block ? Proc.new do |*a,&b|
-          message[:yielded] = a
-          block.call(*a,&b)
-        end : nil
+        proc = if block
+          Proc.new do |*a,&b|
+            message[:yielded] = a
+            block.call(*a,&b)
+          end
+        else
+          nil
+        end
 
         begin
           message[:returned] = method.bind(self).call(*args, &proc)
@@ -227,10 +231,14 @@ module MiniSpec
         message = {object: object, method: meth, arguments: args}
         messages.push(message)
 
-        proc = block ? Proc.new do |*a,&b|
-          message[:yielded] = a
-          block.call(*a,&b)
-        end : nil
+        proc = if block
+          Proc.new do |*a,&b|
+            message[:yielded] = a
+            block.call(*a,&b)
+          end
+        else
+          nil
+        end
 
         begin
           message[:returned] = method.bind(self).call(meth, *args, &proc)
