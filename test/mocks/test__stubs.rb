@@ -336,26 +336,28 @@ class MinispecTest
         assert { o.a }.raise NoMethodError
       end
 
-      it 'undefines early unexisting protected methods' do
-        assert(o.protected_methods).does_not.include? :a
+      unless RUBY_ENGINE == 'rbx'
+        it 'undefines early unexisting protected methods' do
+          assert(o.protected_methods).does_not.include? :a
 
-        protected_stub(o, :a) {:a}
-        does(o.protected_methods).include? :a
+          protected_stub(o, :a) {:a}
+          does(o.protected_methods).include? :a
 
-        restore_originals
+          restore_originals
 
-        assert(o.protected_methods).does_not.include? :a
-      end
+          assert(o.protected_methods).does_not.include? :a
+        end
 
-      it 'undefines early unexisting private methods' do
-        assert(o.private_methods).does_not.include? :a
+        it 'undefines early unexisting private methods' do
+          assert(o.private_methods).does_not.include? :a
 
-        private_stub(o, :a) {:a}
-        does(o.private_methods).include? :a
+          private_stub(o, :a) {:a}
+          does(o.private_methods).include? :a
 
-        restore_originals
+          restore_originals
 
-        assert(o.private_methods).does_not.include? :a
+          assert(o.private_methods).does_not.include? :a
+        end
       end
 
       it 'uses `returns` with a block to define a catchall return' do

@@ -54,7 +54,7 @@ class MinispecTest::Expectations::Unit
 
   should 'raise when arity not respected and lambda used' do
     expect(o).to_receive(:y)
-    does { o.y(&lambda {|a|}) }.raise? ArgumentError, /2 for 1/
+    does { o.y(&lambda {|a|}) }.raise? ArgumentError, /2.+1/
   end
 
   should 'use same expectation for all messages' do

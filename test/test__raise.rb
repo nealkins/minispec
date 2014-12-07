@@ -43,7 +43,10 @@ class MinispecTest
 
       begin # error message as first argument
         should 'pass when raised error message is equal to expected one' do
-          does { Blah }.raise_error? 'uninitialized constant MinispecTest::Raise::Unit::Blah'
+          message = RUBY_ENGINE == 'rbx' ?
+          'Missing or uninitialized constant: MinispecTest::Raise::Unit::Blah' :
+          'uninitialized constant MinispecTest::Raise::Unit::Blah'
+          does { Blah }.raise_error? message
         end
 
         should ':fail when raised error message is NOT equal to expected one' do
