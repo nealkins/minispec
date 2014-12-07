@@ -14,9 +14,10 @@
 
 Simply, I'm tired of syntax like `assert_equal(b, a)`, `a.should == b`, `expect(a).to eq(b)` etc.
 
-Something closer to `a == b` would make more sense to me.
+Something closer to `a == b` would make more sense.
 
-And I'm tired of learning framework specific techniques. I want simply to use **Ruby's native methods**:
+And I'm tired of learning framework specific techniques.<br>
+I want simply to use **Ruby's native methods**:
 
 ```ruby
 assert(a) == b
