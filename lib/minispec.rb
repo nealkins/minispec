@@ -154,16 +154,20 @@ module Minispec
       !$:.include?(lib) && File.directory?(lib) && $:.unshift(lib)
 
       pwd = /\A#{Regexp.escape(Dir.pwd)}\//.freeze
+      reporter = opts[:reporter] || MiniSpec::Reporter.new
       files.each do |f|
         path = File.expand_path(File.dirname(f), Dir.pwd).sub(pwd, '')
         path = File.join(Dir.pwd, path.split('/').first)
-        $:.include?(path) || $:.unshift(path)
-        require(f)
+        pid = fork do
+          $:.include?(path) || $:.unshift(path)
+          require(f)
+          specs.each {|s| s.run(reporter)}
+          exit(1) if reporter.failures?
+        end
+        _, status = Process.waitpid2(pid)
+        exit(1) unless status.success?
       end
-      reporter = opts[:reporter] || MiniSpec::Reporter.new
-      specs.each {|s| s.run(reporter)}
       reporter.summary
-      exit(1) if reporter.failures?
     end
   end
 end
